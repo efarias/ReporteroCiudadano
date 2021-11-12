@@ -30,6 +30,7 @@ public class MainActivity extends AppCompatActivity {
     private ArrayList<Noticia> noticias;
     private int cantidad;
     private ImageView fotoPrincipal;
+    private ArrayList<Usuario> usuarios;
 
 
     @Override
@@ -40,6 +41,7 @@ public class MainActivity extends AppCompatActivity {
         hayPermiso = false;
         fotoPrincipal = findViewById(R.id.imagenPrincipal);
         noticias = (ArrayList<Noticia>) getIntent().getSerializableExtra("noticias");
+        usuarios = (ArrayList<Usuario>) getIntent().getSerializableExtra("usuarios");
 
         if (Build.VERSION.SDK_INT > Build.VERSION_CODES.M){
             requestPermissions(permisos, 100);
@@ -51,11 +53,7 @@ public class MainActivity extends AppCompatActivity {
             if(checkSelfPermission(Manifest.permission.CAMERA) == PackageManager.PERMISSION_GRANTED){
                 Toast.makeText(this, "Permisos OK", Toast.LENGTH_SHORT).show();
                 hayPermiso = true;
-            }else if{
-
-            }
-
-            else {
+            }else {
                 solicitarPermisos();
             }
         }
@@ -99,6 +97,7 @@ public class MainActivity extends AppCompatActivity {
         if (hayPermiso){
             Intent intento = new Intent(this, ActivityCrearNoticia.class);
             intento.putExtra("noticias", noticias);
+            intento.putExtra("usuarios", usuarios);
             startActivity(intento);
 
         }
@@ -112,4 +111,10 @@ public class MainActivity extends AppCompatActivity {
     }
 
 
+    public void CerrarSesion(View view) {
+        Intent intento = new Intent(this, ActivityPrincipal.class);
+        intento.putExtra("noticias",noticias);
+        intento.putExtra("usuarios", usuarios);
+        startActivity(intento);
     }
+}

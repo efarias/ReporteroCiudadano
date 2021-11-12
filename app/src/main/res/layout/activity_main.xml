@@ -31,10 +31,17 @@
 
         <Button
             android:id="@+id/btnListadoNoticias"
-            android:onClick="ListadoDeNoticias"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Listado de noticias" />
+            android:onClick="ListadoDeNoticias"
+            android:text="Vitacora Noticiosa" />
+
+        <Button
+            android:id="@+id/btnCerrarSesion"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:onClick="CerrarSesion"
+            android:text="Cerrar Sesion" />
     </LinearLayout>
 
     <TextView
